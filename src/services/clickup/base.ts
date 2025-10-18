@@ -113,7 +113,7 @@ export class BaseClickUpService {
 
   /**
    * Creates an instance of BaseClickUpService.
-   * @param apiKey - ClickUp API key for authentication
+   * @param apiKey - ClickUp API key or access token for authentication
    * @param teamId - ClickUp team ID for targeting the correct workspace
    * @param baseUrl - Optional custom base URL for the ClickUp API
    */

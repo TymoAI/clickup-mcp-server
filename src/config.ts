@@ -29,6 +29,7 @@ for (let i = 0; i < args.length; i++) {
   if (args[i] === '--env' && i + 1 < args.length) {
     const [key, value] = args[i + 1].split('=');
     if (key === 'CLICKUP_API_KEY') envArgs.clickupApiKey = value;
+    if (key === 'CLICKUP_ACCESS_TOKEN') envArgs.clickupAccessToken = value;
     if (key === 'CLICKUP_TEAM_ID') envArgs.clickupTeamId = value;
     if (key === 'DOCUMENT_SUPPORT') envArgs.documentSupport = value;
     if (key === 'LOG_LEVEL') envArgs.logLevel = value;
@@ -70,6 +71,7 @@ const parseLogLevel = (levelStr: string | undefined): LogLevel => {
 // Define required configuration interface
 interface Config {
   clickupApiKey: string;
+  clickupAccessToken: string;
   clickupTeamId: string;
   enableSponsorMessage: boolean;
   documentSupport: string;
@@ -119,6 +121,7 @@ const parseOrigins = (value: string | undefined, defaultValue: string[]): string
 // Load configuration from command line args or environment variables
 const configuration: Config = {
   clickupApiKey: envArgs.clickupApiKey || process.env.CLICKUP_API_KEY || '',
+  clickupAccessToken: envArgs.clickupAccessToken || process.env.CLICKUP_ACCESS_TOKEN || '',
   clickupTeamId: envArgs.clickupTeamId || process.env.CLICKUP_TEAM_ID || '',
   enableSponsorMessage: process.env.ENABLE_SPONSOR_MESSAGE !== 'false',
   documentSupport: envArgs.documentSupport || process.env.DOCUMENT_SUPPORT || process.env.DOCUMENT_MODULE || process.env.DOCUMENT_MODEL || 'false',
